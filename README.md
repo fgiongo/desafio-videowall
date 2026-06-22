@@ -140,6 +140,13 @@ exibir um mosaico, represente suas quatro entradas na disposição 2 × 2. Caso 
 entrada seja outro mosaico, basta identificá-la como mosaico; não é necessário
 expandir sua estrutura recursivamente na interface.
 
+## Escopo de dispositivo
+
+A interface deve funcionar somente em um computador desktop com tela widescreen
+em orientação paisagem. Não é necessário oferecer suporte a celulares, tablets,
+orientação retrato, telas estreitas, interfaces responsivas ou outros formatos
+de dispositivo. Esses cenários não fazem parte do desafio e não serão avaliados.
+
 ## API mockada
 
 O arquivo [`api.js`](./api.js) simula o backend que controlaria a matriz de
