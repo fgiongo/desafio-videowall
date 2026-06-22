@@ -4,7 +4,7 @@ const FAILURE_RATE = 0.15;
 
 // IDs possuem exatamente 8 bytes ASCII: um prefixo de 3 bytes (`src` ou
 // `mon`) e um número sequencial codificado em 5 dígitos Base64 URL-safe.
-// O valor zero é representado por `AAAAA`; fontes e monitores começam em 1.
+// O valor zero é representado por `AAAAA`; fontes e monitores começam em 0.
 const BASE64URL_DIGITS =
   "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
 const SOURCE_ID_DIGITS = 5;
@@ -17,10 +17,10 @@ let mosaicNumber = 0;
 
 const rawSources = new Map(
   Array.from({ length: INITIAL_SOURCE_COUNT }, (_, index) => {
-    const sourceNumber = index + 1;
+    const sourceNumber = index;
     const source = {
       id: createId("src", sourceNumber),
-      name: `Fonte ${sourceNumber}`,
+      name: `Fonte ${sourceNumber + 1}`,
       type: "raw",
     };
     return [source.id, source];
@@ -28,7 +28,7 @@ const rawSources = new Map(
 );
 const monitorIds = new Set(
   Array.from({ length: MONITOR_COUNT }, (_, index) =>
-    createId("mon", index + 1),
+    createId("mon", index),
   ),
 );
 const mosaicSources = new Map();
@@ -153,7 +153,7 @@ async function registerMosaic(sourceIds) {
     );
   }
   const mosaicSource = {
-    id: createId("src", INITIAL_SOURCE_COUNT + ++sourceNumber),
+    id: createId("src", INITIAL_SOURCE_COUNT + ++sourceNumber - 1),
     name: `Mosaico ${++mosaicNumber}`,
     type: "mosaic",
     sourceIds: [...sourceIds],

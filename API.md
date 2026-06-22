@@ -30,10 +30,10 @@ fornecidos pela API sem tentar interpretá-los ou gerar novos IDs.
 Os quatro monitores válidos são:
 
 ```text
+monAAAAA
 monAAAAB
 monAAAAC
 monAAAAD
-monAAAAE
 ```
 
 ## Modelos
@@ -42,7 +42,7 @@ monAAAAE
 
 ```js
 {
-  id: "srcAAAAB",
+  id: "srcAAAAA",
   name: "Fonte 1",
   type: "raw"
 }
@@ -55,14 +55,14 @@ entradas na matriz 2 × 2.
 
 ```js
 {
-  id: "srcAAAAN",
+  id: "srcAAAAM",
   name: "Mosaico 1",
   type: "mosaic",
   sourceIds: [
+    "srcAAAAA",
     "srcAAAAB",
     "srcAAAAC",
-    "srcAAAAD",
-    "srcAAAAE"
+    "srcAAAAD"
   ]
 }
 ```
@@ -94,10 +94,10 @@ Cadastra um mosaico e o disponibiliza como uma nova fonte.
 
 ```js
 const mosaic = await api.registerMosaic([
+  "srcAAAAA",
   "srcAAAAB",
   "srcAAAAC",
   "srcAAAAD",
-  "srcAAAAE",
 ]);
 ```
 
@@ -152,7 +152,7 @@ dependência.
 Atribui uma fonte original ou um mosaico a um monitor.
 
 ```js
-await api.setMonitorSource("monAAAAB", "srcAAAAN");
+await api.setMonitorSource("monAAAAA", "srcAAAAM");
 ```
 
 ### Parâmetros
@@ -164,8 +164,8 @@ await api.setMonitorSource("monAAAAB", "srcAAAAN");
 
 ```js
 {
-  monitorId: "monAAAAB",
-  sourceId: "srcAAAAN"
+  monitorId: "monAAAAA",
+  sourceId: "srcAAAAM"
 }
 ```
 
@@ -197,7 +197,7 @@ monitor será rejeitado.
 Exclui uma fonte do tipo mosaico.
 
 ```js
-await api.deleteSource("srcAAAAN");
+await api.deleteSource("srcAAAAM");
 ```
 
 ### Parâmetros
@@ -208,7 +208,7 @@ await api.deleteSource("srcAAAAN");
 
 ```js
 {
-  id: "srcAAAAN"
+  id: "srcAAAAM"
 }
 ```
 

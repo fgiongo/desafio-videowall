@@ -93,8 +93,8 @@ visual. Não é necessário carregar ou reproduzir vídeos.
 ## Regras de negócio
 
 - Existem exatamente quatro monitores físicos.
-- Os identificadores válidos dos monitores são `monAAAAB`, `monAAAAC`,
-  `monAAAAD` e `monAAAAE`.
+- Os identificadores válidos dos monitores são `monAAAAA`, `monAAAAB`,
+  `monAAAAC` e `monAAAAD`.
 - Existem 12 fontes originais.
 - Cada monitor exibe uma única fonte por vez: original ou mosaico.
 - Um mosaico possui exatamente quatro entradas e a posição de cada entrada deve
@@ -171,23 +171,23 @@ chamada posterior a `registerMosaic`:
 
 ```js
 const firstMosaic = await api.registerMosaic([
+  "srcAAAAA",
   "srcAAAAB",
   "srcAAAAC",
   "srcAAAAD",
-  "srcAAAAE",
 ]);
 
 await api.registerMosaic([
   firstMosaic.id,
+  "srcAAAAE",
   "srcAAAAF",
   "srcAAAAG",
-  "srcAAAAH",
 ]);
 ```
 
 `setMonitorSource` rejeita identificadores de fonte inexistentes.
-O identificador deve corresponder a um dos quatro monitores, de `monAAAAB`
-a `monAAAAE`.
+O identificador deve corresponder a um dos quatro monitores, de `monAAAAA`
+a `monAAAAD`.
 `deleteSource` remove apenas fontes do tipo mosaico e rejeita a tentativa de
 excluir uma fonte original ou inexistente.
 
@@ -204,7 +204,6 @@ O repositório contém apenas um esqueleto intencionalmente mínimo:
 ├── README.md
 ├── API.md
 ├── api.js
-├── api.test.js
 ├── index.html
 ├── index.js
 ├── style.css

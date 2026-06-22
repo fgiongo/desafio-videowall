@@ -32,12 +32,12 @@ void (async () => {
     console.info("Resposta de api.registerMosaic():", mosaic);
 
     // Mosaicos são fontes e usam o mesmo campo sourceId na atribuição.
-    const mosaicAssignment = await api.setMonitorSource("monAAAAB", mosaic.id);
+    const mosaicAssignment = await api.setMonitorSource("monAAAAA", mosaic.id);
     console.info("Resposta ao atribuir o mosaico:", mosaicAssignment);
 
     // Antes de excluir o mosaico, substituímos sua atribuição por uma fonte raw.
     const rawAssignment = await api.setMonitorSource(
-      "monAAAAB",
+      "monAAAAA",
       rawSourceIds[0],
     );
     console.info("Resposta ao atribuir a fonte raw:", rawAssignment);
